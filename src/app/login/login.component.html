@@ -1,0 +1,42 @@
+<div class ="container">
+  <h2 style="color:green">Login Form</h2>
+  <form [formGroup]="userForm1">
+    
+    <div class="Form-group">
+      <label for="Email">Email:</label>
+      <input type="Email" class="form-control" id="Email" placeholder="Enter Email" maxlength="64" formControlName='Email'>
+    </div>
+    <div *ngIf=" userForm1.get('Email').errors && (userForm1.get('Email').touched || userForm1.get('Email').dirty)">
+        <div *ngIf=" userForm1.controls['Email'].hasError('required')"><span style="color:red">Email must be filled</span></div>
+        <div *ngIf=" userForm1.controls['Email'].hasError('pattern')"><span style="color:red">invalid email id</span></div>
+        </div>
+
+
+
+        <div class="Form-group">
+            <label for="Password">Password:</label>
+            <input type="Password" class="form-control" id="Password" placeholder="Enter Password" maxlength="64" formControlName='Password'>
+      
+          </div>
+          <div *ngIf=" userForm1.get('Password').errors && (userForm1.get('Password').touched || userForm1.get('Password').dirty)">
+              <div *ngIf=" userForm1.controls['Password'].hasError('required')"><span style="color:red">Plz enter your password</span></div>
+              <div *ngIf=" userForm1.controls['Password'].hasError('minlength')"><span style="color:blue">min 6 characters</span></div>
+              <div *ngIf=" userForm1.controls['Password'].hasError('maxlength')"><span style="color:blue">max 16 characters</span></div>
+              </div>
+
+        <button type="submit" class="btn btn-primary"[disabled]="!userForm1.valid" (click)='getValue1()'>Sign Up</button>
+
+
+
+
+<label><input type="checkbox" checked="checked" name="remember" >Remember me</label>
+
+
+
+<div class="container" style="background-color: #f1f1f1">
+  <button type="button" class="cancelbtn">cancel</button>
+  <span class="psw">Forget<a href="#">password?</a></span>
+  
+
+</div>
+</form>

@@ -1,0 +1,83 @@
+<div class ="container">
+  <h2 style="color:green">Sign Up Form</h2>
+  <form [formGroup]="userForm">
+
+     <div class="Form-group">
+      <label for="FirstName">FirstName:</label>
+      <input type="text" class="form-control" id="FirstName" placeholder="Enter FirstName" maxlength="10" formControlName='FirstName'>
+    </div>
+    <div *ngIf="userForm.get('FirstName').errors && (userForm.get('FirstName').touched||userForm.get('FirstName').dirty)">
+        <div *ngIf="userForm.controls['FirstName'].hasError('required')"><span style="color:red">FirstName must be filled</span></div>
+        <div *ngIf="userForm.controls['FirstName'].hasError('pattern')"><span style="color:red">FirstName must be Alphabets</span></div>
+    </div>
+
+ <div class="Form-group">
+        <label for="LastName">LastName:</label>
+        <input type="text" class="form-control" id="LastName" placeholder="Enter LastName" maxlength="10" formControlName='LastName'>
+      </div>
+      <div *ngIf="userForm.get('LastName').errors && (userForm.get('LastName').touched||userForm.get('LastName').dirty)">
+          <div *ngIf=" userForm.controls['LastName'].hasError('required')"><span style="color:red">LastName must be filled</span></div>
+          <div *ngIf=" userForm.controls['LastName'].hasError('pattern')"><span style="color:red">LastName must be Alphabets</span></div>
+      </div>
+      
+<div class="Form-group">
+          <label for="Contact">Contact:</label>
+          <input type="contact" class="form-control" id="Contact" placeholder="Enter Contact" maxlength="10"  formControlName='Contact'>
+         </div>
+        <div *ngIf=" userForm.get('Contact').errors && (userForm.get('Contact').touched||userForm.get('Contact').dirty)">
+                
+            <div *ngIf="userForm.controls['Contact'].hasError('required')"><span style="color:red">Contact must be filled</span></div>
+            <div *ngIf="userForm.controls['Contact'].hasError('pattern')"><span style="color:red">Invalid Numbers</span></div>
+        </div>
+ <!-- <div class="form-group">
+            <label for="select">Gender</label>
+              <select id="select">
+                <option value="null">select option</option>
+                <option value="female">Female</option>
+                <option value="male">male</option>
+              </select>
+          </div>
+         -->  <!-- <div class="Form-group">
+            <label for="Address">Address:</label>
+            <input type="text" class="form-control" id="Address" placeholder="Enter Address" maxlength="30" formControlName='Address'>
+          </div> -->
+          <!-- <div *ngIf="userForm.get('Address').errors && (userForm.get('Address').touched||userForm.get('Address').dirty)">
+              <div *ngIf=" userForm.controls['Address'].hasError('required')"><span style="color:red">Address must be filled</span></div>
+              
+          </div>  -->
+          <div class="Form-group">
+            <label for="Email">Email:</label>
+            <input type="Email" class="form-control" id="Email" placeholder="Enter Email" maxlength="64" formControlName='Email'>
+       </div>
+          <div *ngIf=" userForm.get('Email').errors && (userForm.get('Email').touched || userForm.get('Email').dirty)">
+              <div *ngIf=" userForm.controls['Email'].hasError('required')"><span style="color:red">Email must be filled</span></div>
+              <div *ngIf=" userForm.controls['Email'].hasError('pattern')"><span style="color:red">invalid email id</span></div>
+              </div>
+ <div class="Form-group">
+                  <label for="Password">Password:</label>
+                  <input type="Password" class="form-control" id="Password" placeholder="Enter Password" maxlength="64" formControlName='Password'>
+                       
+                </div>
+                <div *ngIf=" userForm.get('Password').errors && (userForm.get('Password').touched || userForm.get('Password').dirty)">
+                    <div *ngIf=" userForm.controls['Password'].hasError('required')"><span style="color:red">Plz enter your password</span></div>
+                    <div *ngIf=" userForm.controls['Password'].hasError('minlength')"><span style="color:blue">min 6 characters</span></div>
+                    <div *ngIf=" userForm.controls['Password'].hasError('maxlength')"><span style="color:blue">max 16 characters</span></div>
+                    </div>
+    <div class="Form-group">
+            <label for="ConfirmPassword">ConfirmPassword:</label>
+            <input type="Password" class="form-control" id="ConfirmPassword" placeholder="Enter Password" maxlength="64" formControlName='ConfirmPassword'>
+    </div>
+    <div *ngIf=" userForm.get('ConfirmPassword').dirty">
+    <div *ngIf=" userForm.value.Password!=userForm.value.ConfirmPassword"><span style="color:red">password not matched</span></div>
+    </div>
+
+  Address <input ngx-google-places-autocomplete [options]='options'  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+  
+              
+     <!-- <button type="submit" class="btn btn-primary"[disabled]="!userForm.valid" (click)='getValue()'>Sign Up</button> -->
+     <button type="submit" (click)='submit()'> Submit</button>
+     <button type="reset" class="btn btn-primary" (click)='clear()'>Cancel</button>
+
+     
+    </form>
+</div>
